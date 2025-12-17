@@ -2,13 +2,20 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "cli": {
-    "packageManager": "npm"
+    "packageManager": "npm",
+    "analytics": "bf3a727d-3827-4ceb-a8d7-1dbbec932bc1"
   },
   "newProjectRoot": "projects",
   "projects": {
     "ng-nexus-dashboard": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "changeDetection": "OnPush",
+          "style": "css",
+          "skipTests": false
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -65,7 +72,10 @@
           "defaultConfiguration": "development"
         },
         "test": {
-          "builder": "@angular/build:unit-test"
+          "builder": "@angular/build:jest",
+          "options": {
+            "tsConfig": "tsconfig.spec.json"
+          }
         }
       }
     }
